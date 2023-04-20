@@ -1,0 +1,66 @@
+
+.hero-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 67%);
+    backdrop-filter: blur(4px);
+    flex-direction: column;
+    color: #fff;
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+        color: #fff;
+    }
+}
+
+section.services {
+    .services-container {
+        display: flex;
+        gap: 20px;
+        padding: 6rem 20px;
+        color: #fff;
+    }
+    
+    .services-title {
+        font-size: 2rem;
+        color: #fff;
+    }
+    
+    .services-service {
+        display: grid;
+        gap: 1rem;
+        color: #8c8c8c;
+    }
+}
+
+
+
+section.contact {
+    padding: 6rem 1rem;
+    color: #fff;
+}
+
+.contact-header {
+    padding: 0 0 2rem;
+}
+
+.contact-header h2.title {
+    font-size: 2rem;
+}
+
+.contact-form {}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #000;
+}
