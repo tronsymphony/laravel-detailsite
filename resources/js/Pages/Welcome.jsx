@@ -5,7 +5,8 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, router } from '@inertiajs/react';
+import { useState } from 'react'
 
 
 export default function Welcome(props) {
@@ -17,9 +18,36 @@ export default function Welcome(props) {
     
     const submit = (e) => {
         e.preventDefault();
-        console.log('ff')
-        post(route('submitcontact'));
+        // post(route('contact'));
+
+        axios.post('api/articles',{
+            headers: { Accept   : `application/json` }
+        }).then(res=>{
+                console.log(res)
+          }).catch(err=>{
+              console.log(err)
+          });
     };
+
+    const [values, setValues] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+      })
+    
+      function handleChange(e) {
+        const key = e.target.id;
+        const value = e.target.value
+        setValues(values => ({
+            ...values,
+            [key]: value,
+        }))
+      }
+    
+      function handleSubmit(e) {
+        e.preventDefault()
+        router.post('api/articles', values)
+      }
 
     return (
         <>
@@ -176,6 +204,15 @@ export default function Welcome(props) {
                                 </label>
                                 <button type="submit">Submit Request</button>
                             </form>
+                            <form onSubmit={handleSubmit}>
+      <label htmlFor="first_name">First name:</label>
+      <input id="first_name" value={values.first_name} onChange={handleChange} />
+      <label htmlFor="last_name">Last name:</label>
+      <input id="last_name" value={values.last_name} onChange={handleChange} />
+      <label htmlFor="email">Email:</label>
+      <input id="email" value={values.email} onChange={handleChange} />
+      <button type="submit">Submit</button>
+    </form>
                         </div>
                     </div>
                 </section>
